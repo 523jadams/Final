@@ -1,4 +1,4 @@
-// select elements
+// elements
 const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
@@ -15,18 +15,18 @@ let LIST, id;
 // get from localstorage
 let data = localStorage.getItem("TODO");
 
-// data not empty
+// make sure data not empty
 if(data){
     LIST = JSON.parse(data);
     id = LIST.length; // set id to last one in list
     loadList(LIST); // load list to user interface
 }else{
-    // if data isnt empty
+    // if data not empty
     LIST = [];
     id = 0;
 }
 
-// load items to user's interface
+// load items to user interface
 function loadList(array){
     array.forEach(function(item){
         addToDo(item.name, item.id, item.done, item.trash);
@@ -65,7 +65,7 @@ function addToDo(toDo, id, done, trash){
     list.insertAdjacentHTML(position, item);
 }
 
-// add item to list user
+// add to list user
 document.addEventListener("keyup",function(even){
     if(event.keyCode == 13){
         const toDo = input.value;
@@ -81,7 +81,7 @@ document.addEventListener("keyup",function(even){
                 trash : false
             });
 
-// add item to localstorage
+// add to local storage
             localStorage.setItem("TODO", JSON.stringify(LIST));
 
             id++;
@@ -118,6 +118,6 @@ list.addEventListener("click", function(event){
         removeToDo(element);
     }
 
-// add item to localstorage
+// add item to local storage
     localStorage.setItem("TODO", JSON.stringify(LIST));
 });
